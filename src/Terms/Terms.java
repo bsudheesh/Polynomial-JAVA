@@ -15,8 +15,8 @@ public class Terms {
 	}
 	public String toString(){
 		String formatted_string="";
-		if(this.exponent==0){
-			formatted_string+=Integer.toString(this.coefficient)+" x^ "+Integer.toString(this.exponent);
+		if(this.exponent!=0){
+			formatted_string+=Integer.toString(this.coefficient)+"x^"+Integer.toString(this.exponent);
 		}
 		else{
 			formatted_string+=Integer.toString(this.coefficient);
