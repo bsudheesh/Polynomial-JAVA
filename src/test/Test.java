@@ -3,6 +3,11 @@ import Polynomial.Polynomial;
 import Terms.Terms;
 import java.io.*;
 import java.util.*;
+/**
+ * This class will call all the functions that are in class Polynomial and Terms.
+ * @author Sudheesh
+ *
+ */
 public class Test {
 	public static void main(String[] args){
 		//Terms termsObject= new Terms();
@@ -23,7 +28,7 @@ public class Test {
 						exponent_string=spiltter[i];
 						exponent=Integer.parseInt(exponent_string);
 						Terms termsObject= new Terms(exponent,coefficient);
-						System.out.println("The exponent is : "+termsObject.toString());
+						System.out.println("The exponent is : "+termsObject.get_coefficient()+ " The exponent is : "+termsObject.get_exponent()+" The exponent is : "+termsObject.toString());
 					}
 					
 					
