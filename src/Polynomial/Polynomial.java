@@ -53,20 +53,15 @@ public class Polynomial {
 	public void Delete(int x,int y){
 		
 	}
-	/**
-	 * This function will reverse the polynomial.
-	 */
-	public void Reverse(){
-		
-	}
+	
 	/**
 	 * This will return the product
 	 */
-	public void Product(){
+	public String Product(){
 		//System.out.println("The product is being called");
 		//int count=0;
 		int temp_count=0;
-		String polynomial="";
+		String polynomial="",output="";
 		for(Terms iter: array){
 			if(temp_count==0){
 				polynomial+=iter.toString();
@@ -81,9 +76,23 @@ public class Polynomial {
 			temp_count++;
 			
 		}
-		System.out.println("P("+count+")"+" : "+polynomial);
 		count++;
 		array.clear();
+		return polynomial;
+		
 		
 	}
+	/**
+	 * This function will reverse the polynomial.
+	 */
+	public String Reverse(){
+		String string="";
+		String reverse_string="";
+		string=this.Product();
+		for(int i=string.length()-1;i>=0;i--){
+			reverse_string+=string.charAt(i);
+		}
+		return reverse_string;
+	}
+	
 }

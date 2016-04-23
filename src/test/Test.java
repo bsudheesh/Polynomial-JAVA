@@ -11,6 +11,7 @@ import java.util.*;
 public class Test {
 	public static void main(String[] args){
 		//Terms termsObject= new Terms();
+		int count=0;
 		Polynomial polynomialObject = new Polynomial();
 		String line=null,exponent_string="",coefficient_string="";
 		int exponent=0,coefficient=0;
@@ -38,7 +39,9 @@ public class Test {
 					
 				}
 				
-				polynomialObject.Product();
+				System.out.println("P(" + count+")"+polynomialObject.Product());
+				System.out.println("P(" + count+")"+polynomialObject.Reverse());
+				count++;
 				
 			}
 			bufferedReader.close();
