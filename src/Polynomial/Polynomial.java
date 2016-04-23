@@ -9,7 +9,8 @@ import java.util.*;
  * 2) Insert: to insert the exponents and the coefficients.
  * 3) Delete: Removes the term with coefficients and exponents passed in as parameters.
  * 4) Reverse: That reverses the polynomial.
- * 5) Prouct: Computes the product of all the terms.
+ * 5) Product: Computes the product of all the terms.
+ * 6) Clear: Clears the array list.
  * @author Sudheesh
  *
  */
@@ -33,16 +34,26 @@ public class Polynomial {
 	 * @param y
 	 */
 	public void Insert(int x, int y){
+		/**
+		 * In this Insert function, we are gonna sort the values and add it into our ArrayList.
+		 * First the exponents are handling to see if the exponents are equal.
+		 * If they are not, the values are accordingly added into the generic List.
+		 */
 		//String output="";
-		int small_index=0,greater_index=0;
 		testObject = new Terms(x,y);
+		/**
+		 * Global position is a variable that tells us that the list is empty
+		 * and we just add the value in the List.
+		 * Local position is used to keep track of the position in the List.
+		 */
 		if(global_position==0){
 			array.add(global_position,testObject);
 			global_position++;
 			//local_position++;
 		}
 		else{
-			int local_position=0;
+			//System.out.println("The value of global variable is : "+global_position);
+			int local_position=0,greater=-1;
 			for(Terms iter:array){
 				if(iter.get_exponent()==y){
 					if(iter.get_coefficient()>x){
@@ -56,26 +67,45 @@ public class Polynomial {
 					
 				}
 				else if(iter.get_exponent()>y){
-					greater_index=local_position;
-					return;
+					greater=1;
+					break;
+					//array.add(local_position+1, testObject);
 					
 				}
 				else{
-					small_index=local_position;
+					//array.add(local_position, testObject);
+					break;
 					
 				}
-				local_position++;
+				//local_position++;
 			}
+			if(greater==1){
+				array.add(local_position+1, testObject);
+			}
+			else{
+				array.add(local_position, testObject);
+			}
+			/*
+			if(small_index==array.size()-1){
+				array.add(0, testObject);
+			}
+			else if(greater_index==array.size()-1){
+				array.add(greater_index, testObject);
+			}
+			
+			/*
+			if(small_index!=0){
+				array.add(small_index, testObject);
+			}
+			/*
 			if(small_index!=0 || greater_index!=0){
-				array.add(small_index+1,testObject);
-			}
-			if(small_index==0){
+				
 				array.add(small_index,testObject);
 			}
-			else if(greater_index==0){
-				array.add(array.size()-1,testObject);
-				
+			else if(small_index==0){
+				array.add(small_index,testObject);
 			}
+			*/
 		}
 		
 		/*
@@ -120,7 +150,7 @@ public class Polynomial {
 				polynomial+=iter.toString();
 			}
 			else{
-				polynomial+="+"+iter.toString();
+				polynomial+=" + "+iter.toString();
 			}
 			//polynomial=polynomial+" + "+iter;
 			temp_count++;
@@ -154,7 +184,7 @@ public class Polynomial {
 				temp+=iter.toString();
 			}
 			else{
-				temp+="+"+iter.toString();
+				temp+=" + "+iter.toString();
 			}
 			
 			reverse_string.insert(0, temp);
