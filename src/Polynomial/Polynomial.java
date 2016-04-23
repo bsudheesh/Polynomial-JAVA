@@ -16,7 +16,7 @@ import java.util.*;
 public class Polynomial {
 	
 	ArrayList<Terms> array;
-	private int count=0;
+	private int global_position=0;
 	Terms testObject;
 	private String new_String="";
 	/**
@@ -34,8 +34,50 @@ public class Polynomial {
 	 */
 	public void Insert(int x, int y){
 		//String output="";
+		int small_index=0,greater_index=0;
 		testObject = new Terms(x,y);
-		array.add(testObject);
+		if(global_position==0){
+			array.add(global_position,testObject);
+			global_position++;
+			//local_position++;
+		}
+		else{
+			int local_position=0;
+			for(Terms iter:array){
+				if(iter.get_exponent()==y){
+					if(iter.get_coefficient()>x){
+						array.add(local_position+1,testObject);
+					}
+					else{
+						array.add(local_position,testObject);
+						//local_position++;
+					}
+					return;
+					
+				}
+				else if(iter.get_exponent()>y){
+					greater_index=local_position;
+					return;
+					
+				}
+				else{
+					small_index=local_position;
+					
+				}
+				local_position++;
+			}
+			if(small_index!=0 || greater_index!=0){
+				array.add(small_index+1,testObject);
+			}
+			if(small_index==0){
+				array.add(small_index,testObject);
+			}
+			else if(greater_index==0){
+				array.add(array.size()-1,testObject);
+				
+			}
+		}
+		
 		/*
 		new_String=testObject.toString();
 		output+=new_String;
@@ -54,12 +96,12 @@ public class Polynomial {
 		for(Terms iter : array){
 			if((iter.get_coefficient()==x)&&(iter.get_exponent()==y)){
 				array.remove(iter);
-				System.out.println("The values are deleted");
+				System.out.println("The values are deleted. Coefficient : "+x + ". Exponent : "+y);
 				return;
 			}
 			
 		}
-		System.out.println("ERROR! The value not found");
+		System.out.println("ERROR! The value not found.  Coefficient : "+x + ". Exponent : "+y);
 	}
 	
 	/**
@@ -84,7 +126,6 @@ public class Polynomial {
 			temp_count++;
 			
 		}
-		count++;
 		//array.clear();
 		return polynomial;
 		
@@ -127,6 +168,7 @@ public class Polynomial {
 	}
 	public void clearArrayList(){
 		array.clear();
+		global_position=0;
 	}
 	
 }
