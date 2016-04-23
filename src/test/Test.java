@@ -11,6 +11,7 @@ import java.util.*;
 public class Test {
 	public static void main(String[] args){
 		//Terms termsObject= new Terms();
+		Polynomial polynomialObject = new Polynomial();
 		String line=null,exponent_string="",coefficient_string="";
 		int exponent=0,coefficient=0;
 		File fileName = new File("file.txt");
@@ -27,12 +28,17 @@ public class Test {
 					else{
 						exponent_string=spiltter[i];
 						exponent=Integer.parseInt(exponent_string);
-						Terms termsObject= new Terms(exponent,coefficient);
-						System.out.println("The exponent is : "+termsObject.get_coefficient()+ " The exponent is : "+termsObject.get_exponent()+" The exponent is : "+termsObject.toString());
+						//Terms termsObject= new Terms(exponent,coefficient);
+						polynomialObject.Insert(coefficient,exponent);
+						
+						
+						//System.out.println("The exponent is : "+termsObject.get_coefficient()+ " The exponent is : "+termsObject.get_exponent()+" The exponent is : "+termsObject.toString());
 					}
 					
 					
 				}
+				
+				polynomialObject.Product();
 				
 			}
 			bufferedReader.close();

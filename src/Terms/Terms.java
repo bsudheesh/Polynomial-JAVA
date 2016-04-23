@@ -13,6 +13,7 @@ import Polynomial.Polynomial;
  */
 public class Terms {
 	private int exponent,coefficient;
+	private String total_string="";
 	/**
 	 * Initialises the private member variables of the class.
 	 * Precondition: Proper values are passed as an argument to the constructor.
@@ -20,7 +21,7 @@ public class Terms {
 	 * @param exponent
 	 * @param coefficient
 	 */
-	public Terms(int exponent,int coefficient){
+	public Terms(int coefficient,int exponent){
 		this.exponent=exponent;
 		this.coefficient=coefficient;
 	}
@@ -49,11 +50,19 @@ public class Terms {
 	 */
 	public String toString(){
 		String formatted_string="";
-		if(this.exponent!=0){
-			formatted_string+=Integer.toString(this.coefficient)+"x^"+Integer.toString(this.exponent);
-		}
-		else{
+		if(this.exponent==0){
 			formatted_string+=Integer.toString(this.coefficient);
+		}
+		else if(this.exponent==1){
+			formatted_string+=Integer.toString(this.coefficient)+"x";
+		}
+		else if(this.coefficient==0){
+			formatted_string+="x^"+Integer.toString(this.exponent);
+			
+		}
+		
+		else{
+			formatted_string+=Integer.toString(this.coefficient)+"x^"+Integer.toString(this.exponent);
 		}
 		return formatted_string;
 		

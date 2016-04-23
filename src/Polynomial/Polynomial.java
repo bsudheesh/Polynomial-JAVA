@@ -14,11 +14,17 @@ import java.util.*;
  *
  */
 public class Polynomial {
+	
+	ArrayList<Terms> array;
+	private int count=0;
+	Terms testObject;
+	private String new_String="";
 	/**
 	 * Creates an empty list
 	 */
+	
 	public Polynomial(){
-		
+		 array= new ArrayList<Terms>();
 	}
 	/**
 	 * PreCondition: The exponents and coefficients are passed in as arguments.
@@ -27,6 +33,14 @@ public class Polynomial {
 	 * @param y
 	 */
 	public void Insert(int x, int y){
+		//String output="";
+		testObject = new Terms(x,y);
+		array.add(testObject);
+		/*
+		new_String=testObject.toString();
+		output+=new_String;
+		*/
+		
 		
 	}
 	/**
@@ -49,6 +63,27 @@ public class Polynomial {
 	 * This will return the product
 	 */
 	public void Product(){
+		//System.out.println("The product is being called");
+		//int count=0;
+		int temp_count=0;
+		String polynomial="";
+		for(Terms iter: array){
+			if(temp_count==0){
+				polynomial+=iter.toString();
+			}
+			else if(iter.get_coefficient()<0){
+				polynomial+=iter.toString();
+			}
+			else{
+				polynomial+="+"+iter.toString();
+			}
+			//polynomial=polynomial+" + "+iter;
+			temp_count++;
+			
+		}
+		System.out.println("P("+count+")"+" : "+polynomial);
+		count++;
+		array.clear();
 		
 	}
 }
