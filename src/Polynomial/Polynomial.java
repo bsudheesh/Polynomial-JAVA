@@ -51,7 +51,15 @@ public class Polynomial {
 	 */
 	
 	public void Delete(int x,int y){
-		
+		for(Terms iter : array){
+			if((iter.get_coefficient()==x)&&(iter.get_exponent()==y)){
+				array.remove(iter);
+				System.out.println("The values are deleted");
+				return;
+			}
+			
+		}
+		System.out.println("ERROR! The value not found");
 	}
 	
 	/**
@@ -77,7 +85,7 @@ public class Polynomial {
 			
 		}
 		count++;
-		array.clear();
+		//array.clear();
 		return polynomial;
 		
 		
@@ -85,14 +93,40 @@ public class Polynomial {
 	/**
 	 * This function will reverse the polynomial.
 	 */
-	public String Reverse(){
+	public StringBuffer Reverse(){
+		/*
 		String string="";
 		String reverse_string="";
 		string=this.Product();
 		for(int i=string.length()-1;i>=0;i--){
 			reverse_string+=string.charAt(i);
+		}*/
+		//ArrayList<Terms> reverse_array = new ArrayList<Terms>();
+		int temp_count=0;
+		String temp="";
+		StringBuffer reverse_string = new StringBuffer("");
+		for(Terms iter : array){
+			if(temp_count==array.size()-1){
+				temp+=iter.toString();
+			}
+			else if(iter.get_coefficient()<0){
+				temp+=iter.toString();
+			}
+			else{
+				temp+="+"+iter.toString();
+			}
+			
+			reverse_string.insert(0, temp);
+			//polynomial=polynomial+" + "+iter;
+			temp="";
+			temp_count++;
+			
+			
 		}
 		return reverse_string;
+	}
+	public void clearArrayList(){
+		array.clear();
 	}
 	
 }

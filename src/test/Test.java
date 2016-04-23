@@ -39,9 +39,15 @@ public class Test {
 					
 				}
 				
-				System.out.println("P(" + count+")"+polynomialObject.Product());
-				System.out.println("P(" + count+")"+polynomialObject.Reverse());
+				System.out.println("P(" + count+")"+" : "+polynomialObject.Product());
+				polynomialObject.Delete(7,1);
+				System.out.println("The polynomial after deleting is ");
+				System.out.println("P(" + count+")"+" : "+polynomialObject.Product());
+				System.out.println("The polynomial after reversing");
+				System.out.println("P(" + count+")"+" : "+polynomialObject.Reverse());
 				count++;
+				polynomialObject.clearArrayList();
+				System.out.println("\n\n\n");
 				
 			}
 			bufferedReader.close();
