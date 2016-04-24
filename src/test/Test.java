@@ -1,8 +1,6 @@
 package test;
 import Polynomial.Polynomial;
-import Terms.Terms;
 import java.io.*;
-import java.util.*;
 /**
  * This class will call all the functions that are in class Polynomial and Terms.
  * @author Sudheesh
@@ -19,36 +17,46 @@ public class Test {
 		try{
 			FileReader fileReader = new FileReader(fileName);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
-			while((line=bufferedReader.readLine())!=null){
-				String[] spiltter=line.split(";");
-				for(int i=1;i<spiltter.length;i++){
-					if(i%2!=0){
-						coefficient_string=spiltter[i];
-						coefficient=Integer.parseInt(coefficient_string);
-					}
-					else{
-						exponent_string=spiltter[i];
-						exponent=Integer.parseInt(exponent_string);
-						//Terms termsObject= new Terms(exponent,coefficient);
-						polynomialObject.Insert(coefficient,exponent);
+			int length=bufferedReader.read();
+			/**
+			 * This is check if the file is empty.
+			 * If it is empty, all the other operations are disqualified. 
+			 */
+			if(length==-1){
+				System.out.println("Error!! The file is empty");
+			}
+			else{
+				while((line=bufferedReader.readLine())!=null){
+					String[] spiltter=line.split(";");
+					for(int i=1;i<spiltter.length;i++){
+						if(i%2!=0){
+							coefficient_string=spiltter[i];
+							coefficient=Integer.parseInt(coefficient_string);
+						}
+						else{
+							exponent_string=spiltter[i];
+							exponent=Integer.parseInt(exponent_string);
+							//Terms termsObject= new Terms(exponent,coefficient);
+							polynomialObject.Insert(coefficient,exponent);
+							
+							
+							//System.out.println("The exponent is : "+termsObject.get_coefficient()+ " The exponent is : "+termsObject.get_exponent()+" The exponent is : "+termsObject.toString());
+						}
 						
 						
-						//System.out.println("The exponent is : "+termsObject.get_coefficient()+ " The exponent is : "+termsObject.get_exponent()+" The exponent is : "+termsObject.toString());
 					}
 					
+					System.out.println("P(" + count+")"+" : "+polynomialObject.Product());
+					polynomialObject.Delete(7,1);
+					System.out.println("The polynomial after deleting is ");
+					System.out.println("P(" + count+")"+" : "+polynomialObject.Product());
+					System.out.println("The polynomial after reversing");
+					System.out.println("P(" + count+")"+" : "+polynomialObject.Reverse());
+					count++;
+					polynomialObject.clearArrayList();
+					System.out.println("\n\n\n");
 					
 				}
-				
-				System.out.println("P(" + count+")"+" : "+polynomialObject.Product());
-				polynomialObject.Delete(7,1);
-				System.out.println("The polynomial after deleting is ");
-				System.out.println("P(" + count+")"+" : "+polynomialObject.Product());
-				System.out.println("The polynomial after reversing");
-				System.out.println("P(" + count+")"+" : "+polynomialObject.Reverse());
-				count++;
-				polynomialObject.clearArrayList();
-				System.out.println("\n\n\n");
-				
 			}
 			bufferedReader.close();
 			

@@ -1,6 +1,4 @@
 package Terms;
-import test.Test;
-import Polynomial.Polynomial;
 
 /**
  * This is the class term that has the following functions
@@ -13,7 +11,6 @@ import Polynomial.Polynomial;
  */
 public class Terms {
 	private int exponent,coefficient;
-	private String total_string="";
 	/**
 	 * Initialises the private member variables of the class.
 	 * Precondition: Proper values are passed as an argument to the constructor.
@@ -28,20 +25,38 @@ public class Terms {
 	/**
 	 * Precondition: There is a value for the coefficient
 	 * Postcondition:  Returns the coefficient
+	 * This function will also check to see if the proper conversion has 
+	 * been made to the Integer. If the coefficient is not of type int then Error
+	 * message is shown and -1 is returned.
 	 * @return
 	 */
 	public int get_coefficient(){
-		return this.coefficient;
+		if(this.coefficient==(int)this.coefficient){
+			return this.coefficient;
+		}
+		else{
+			System.out.println("Error!! This number is not of type int");
+			return -1;
+		}
 	}
 	
 	/**
 	 * Precondition: There is a value for the exponent.
 	 * Postcondition: Returns the exponent.
+	 * This function will also check to see if the proper conversion has 
+	 * been made to the Integer. If the exponent is not of type int then Error
+	 * message is shown and -1 is returned.
 	 * @return
 	 */
 	
 	public int get_exponent(){
-		return this.exponent;
+		if(this.exponent==(int)this.exponent){
+			return this.exponent;
+		}
+		else{
+			System.out.println("Error!! This number is not of type int");
+			return -1;
+		}
 	}
 	/**
 	 * Precondition: The values for coefficient and exponents are present.

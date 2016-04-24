@@ -1,7 +1,5 @@
 package Polynomial;
 import Terms.Terms;
-import test.Test;
-import java.io.*;
 import java.util.*;
 /**
  * This class will have 5 member functions.
@@ -85,7 +83,7 @@ public class Polynomial {
 		//System.out.println("The product is being called");
 		//int count=0;
 		int temp_count=0;
-		String polynomial="",output="";
+		String polynomial="";
 		for(Terms iter: array){
 			if(temp_count==0){
 				polynomial+=iter.toString();
