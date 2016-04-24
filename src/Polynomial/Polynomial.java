@@ -5,10 +5,11 @@ import java.util.*;
  * This class will have 5 member functions.
  * 1) Constructor to set the arrayList
  * 2) Insert: to insert the exponents and the coefficients.
- * 3) Delete: Removes the term with coefficients and exponents passed in as parameters.
- * 4) Reverse: That reverses the polynomial.
- * 5) Product: Computes the product of all the terms.
- * 6) Clear: Clears the array list.
+ * 3) return_polynomial: Returns the polynomial in asceding order.
+ * 4) Delete: Removes the term with coefficients and exponents passed in as parameters.
+ * 5) Reverse: That reverses the polynomial.
+ * 6) Product: Computes the product of all the terms.
+ * 7) Clear: Clears the array list.
  * @author Sudheesh
  *
  */
@@ -54,6 +55,42 @@ public class Polynomial {
 			}
 			array.add(testObject);
 		}
+		
+	}
+	/**
+	 * This function returns the polynomial in ascending order.
+	 */
+	public String return_polynomial(){
+		/*
+		String string="";
+		String reverse_string="";
+		string=this.Product();
+		for(int i=string.length()-1;i>=0;i--){
+			reverse_string+=string.charAt(i);
+		}*/
+		//ArrayList<Terms> reverse_array = new ArrayList<Terms>();
+		int temp_count=0;
+		String temp="";
+		StringBuffer reverse_string = new StringBuffer("");
+		for(Terms iter : array){
+			if(temp_count==array.size()-1){
+				temp+=iter.toString();
+			}
+			else if(iter.get_coefficient()<0){
+				temp+=iter.toString();
+			}
+			else{
+				temp+=" + "+iter.toString();
+			}
+			
+			reverse_string.insert(0, temp);
+			//polynomial=polynomial+" + "+iter;
+			temp="";
+			temp_count++;
+			
+			
+		}
+		return reverse_string;
 		
 	}
 	
@@ -103,41 +140,7 @@ public class Polynomial {
 		
 		
 	}
-	/**
-	 * This function will reverse the polynomial.
-	 */
-	public StringBuffer Reverse(){
-		/*
-		String string="";
-		String reverse_string="";
-		string=this.Product();
-		for(int i=string.length()-1;i>=0;i--){
-			reverse_string+=string.charAt(i);
-		}*/
-		//ArrayList<Terms> reverse_array = new ArrayList<Terms>();
-		int temp_count=0;
-		String temp="";
-		StringBuffer reverse_string = new StringBuffer("");
-		for(Terms iter : array){
-			if(temp_count==array.size()-1){
-				temp+=iter.toString();
-			}
-			else if(iter.get_coefficient()<0){
-				temp+=iter.toString();
-			}
-			else{
-				temp+=" + "+iter.toString();
-			}
-			
-			reverse_string.insert(0, temp);
-			//polynomial=polynomial+" + "+iter;
-			temp="";
-			temp_count++;
-			
-			
-		}
-		return reverse_string;
-	}
+	
 	/**
 	 * This function will empty the arrayList.
 	 * I was having problem as all the polynomial was stored in the arrayList everytime

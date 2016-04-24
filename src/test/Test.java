@@ -46,12 +46,14 @@ public class Test {
 						
 					}
 					
-					System.out.println("P(" + count+")"+" : "+polynomialObject.Product());
+					System.out.println("P(" + count+")"+" : "+polynomialObject.return_polynomial());
+					System.out.println("The product of the terms is : "+polynomialObject.Product());
 					polynomialObject.Delete(7,1);
 					System.out.println("The polynomial after deleting is ");
-					System.out.println("P(" + count+")"+" : "+polynomialObject.Product());
+					System.out.println("P(" + count+")"+" : "+polynomialObject.return_polynomial());
 					System.out.println("The polynomial after reversing");
 					System.out.println("P(" + count+")"+" : "+polynomialObject.Reverse());
+					System.out.println("The product of the terms is : "+polynomialObject.Product());
 					count++;
 					polynomialObject.clearArrayList();
 					System.out.println("\n\n\n");
