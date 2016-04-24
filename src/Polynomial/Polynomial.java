@@ -16,10 +16,9 @@ import java.util.*;
  */
 public class Polynomial {
 	
-	ArrayList<Terms> array;
-	private int global_position=0;
+	private ArrayList<Terms> array;
 	Terms testObject;
-	private String new_String="";
+	
 	/**
 	 * Creates an empty list
 	 */
@@ -35,86 +34,31 @@ public class Polynomial {
 	 */
 	public void Insert(int x, int y){
 		/**
-		 * In this Insert function, we are gonna sort the values and add it into our ArrayList.
-		 * First the exponents are handling to see if the exponents are equal.
-		 * If they are not, the values are accordingly added into the generic List.
+		 * In this Insert function, we are going to sort the values and add it into our ArrayList.
 		 */
-		//String output="";
 		testObject = new Terms(x,y);
-		/**
-		 * Global position is a variable that tells us that the list is empty
-		 * and we just add the value in the List.
-		 * Local position is used to keep track of the position in the List.
-		 */
-		if(global_position==0){
-			array.add(global_position,testObject);
-			global_position++;
-			//local_position++;
+		
+		if(array.size()==0){
+			array.add(testObject);
 		}
 		else{
-			//System.out.println("The value of global variable is : "+global_position);
-			int local_position=0,greater=-1;
-			for(Terms iter:array){
-				if(iter.get_exponent()==y){
-					if(iter.get_coefficient()>x){
-						array.add(local_position+1,testObject);
-					}
-					else{
-						array.add(local_position,testObject);
-						//local_position++;
-					}
+			/**
+			 * We are going to use the index of the object of Term object and get it's
+			 * exponent and compare that exponent with the value passed as parameter.
+			 */
+			for(int i=0;i<array.size();i++){
+				Terms index= array.get(i);
+				int exponents= index.get_exponent();
+				if(y>=exponents){
+					array.add(i,testObject);
 					return;
-					
 				}
-				else if(iter.get_exponent()>y){
-					greater=1;
-					break;
-					//array.add(local_position+1, testObject);
-					
-				}
-				else{
-					//array.add(local_position, testObject);
-					break;
-					
-				}
-				//local_position++;
 			}
-			if(greater==1){
-				array.add(local_position+1, testObject);
-			}
-			else{
-				array.add(local_position, testObject);
-			}
-			/*
-			if(small_index==array.size()-1){
-				array.add(0, testObject);
-			}
-			else if(greater_index==array.size()-1){
-				array.add(greater_index, testObject);
-			}
-			
-			/*
-			if(small_index!=0){
-				array.add(small_index, testObject);
-			}
-			/*
-			if(small_index!=0 || greater_index!=0){
-				
-				array.add(small_index,testObject);
-			}
-			else if(small_index==0){
-				array.add(small_index,testObject);
-			}
-			*/
+			array.add(testObject);
 		}
 		
-		/*
-		new_String=testObject.toString();
-		output+=new_String;
-		*/
-		
-		
 	}
+	
 	/**
 	 * PreCondition: The exponents and coefficients are passed in as arguments.
 	 * PostCondition: The values with the exponent and coefficient is deleted from the Polynomial.
@@ -196,9 +140,13 @@ public class Polynomial {
 		}
 		return reverse_string;
 	}
+	/**
+	 * This function will empty the arrayList.
+	 * I was having problem as all the polynomial was stored in the arrayList everytime
+	 * we read from the file. So this is called after one line has been read from the file.
+	 */
 	public void clearArrayList(){
 		array.clear();
-		global_position=0;
 	}
 	
 }
