@@ -60,7 +60,82 @@ public class Polynomial {
 	/**
 	 * This function returns the polynomial in ascending order.
 	 */
+	
 	public String return_polynomial(){
+		//System.out.println("The product is being called");
+		//int count=0;
+		int temp_count=0;
+		String polynomial="";
+		for(Terms iter: array){
+			if(temp_count==0){
+				polynomial+=iter.toString();
+			}
+			else if(iter.get_coefficient()<0){
+				polynomial+=iter.toString();
+			}
+			else{
+				polynomial+=" + "+iter.toString();
+			}
+			//polynomial=polynomial+" + "+iter;
+			temp_count++;
+			}
+			//array.clear();
+			return polynomial;
+		
+	}
+	
+	/**
+	 * PreCondition: The exponents and coefficients are passed in as arguments.
+	 * PostCondition: The values with the exponent and coefficient is deleted from the Polynomial.
+	 * @param x
+	 * @param y
+	 */
+	
+	public void Delete(int x,int y){
+		for(Terms iter : array){
+			if((iter.get_coefficient()==x)&&(iter.get_exponent()==y)){
+				array.remove(iter);
+				System.out.println("The values are deleted. Coefficient : "+x + ". Exponent : "+y);
+				return;
+			}
+			
+		}
+		System.out.println("ERROR! The value not found.  Coefficient : "+x + ". Exponent : "+y);
+	}
+	
+	/**
+	 * This will return the product
+	 */
+	public String Product(){
+		String product="";
+		int coefficient=1,exponents=0;
+		for(Terms iter : array){
+			int iter_coefficient=iter.get_coefficient());
+			int iter_exponents=iter.get_exponent;
+			exponents+=iter_exponents;
+			coefficient*=iter_coefficient;
+		}
+		if(exponents==0){
+			product+=Integer.toString(coefficient);
+		}
+		else if(coefficient==1){
+			product+="x^"+Integer.toString(exponents);
+		}
+		else if(coefficient==0){
+			//do nothing;
+		}
+		else{
+			product+=coefficient+"x^"+exponents;
+		}
+		return product;
+		
+		
+		
+	}
+	/**
+	 * This function will reverse the polynomial.
+	 */
+	public StringBuffer Reverse(){
 		/*
 		String string="";
 		String reverse_string="";
@@ -91,56 +166,7 @@ public class Polynomial {
 			
 		}
 		return reverse_string;
-		
 	}
-	
-	/**
-	 * PreCondition: The exponents and coefficients are passed in as arguments.
-	 * PostCondition: The values with the exponent and coefficient is deleted from the Polynomial.
-	 * @param x
-	 * @param y
-	 */
-	
-	public void Delete(int x,int y){
-		for(Terms iter : array){
-			if((iter.get_coefficient()==x)&&(iter.get_exponent()==y)){
-				array.remove(iter);
-				System.out.println("The values are deleted. Coefficient : "+x + ". Exponent : "+y);
-				return;
-			}
-			
-		}
-		System.out.println("ERROR! The value not found.  Coefficient : "+x + ". Exponent : "+y);
-	}
-	
-	/**
-	 * This will return the product
-	 */
-	public String Product(){
-		//System.out.println("The product is being called");
-		//int count=0;
-		int temp_count=0;
-		String polynomial="";
-		for(Terms iter: array){
-			if(temp_count==0){
-				polynomial+=iter.toString();
-			}
-			else if(iter.get_coefficient()<0){
-				polynomial+=iter.toString();
-			}
-			else{
-				polynomial+=" + "+iter.toString();
-			}
-			//polynomial=polynomial+" + "+iter;
-			temp_count++;
-			
-		}
-		//array.clear();
-		return polynomial;
-		
-		
-	}
-	
 	/**
 	 * This function will empty the arrayList.
 	 * I was having problem as all the polynomial was stored in the arrayList everytime
